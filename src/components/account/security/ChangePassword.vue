@@ -20,7 +20,7 @@
             let response = await store.dispatch('changePassword', form);
             message.value = response.data.message;
         } catch(err) {  
-            const  resErrors = err.response.data.errors
+            const resErrors = err.response.data.errors
             if (err.response.status === 400) return errors.value = resErrors;   
             if (err.response.status  >  400) return errors.value = [...errors.value, { message : resErrors }];
         } 
@@ -114,7 +114,6 @@
         </div>
     </div>
     <div class="w-full"> 
-
             <button
               @click="handleChangePassword"
               type="submit"
