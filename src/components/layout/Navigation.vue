@@ -131,7 +131,7 @@
           bg-transparent
           text-gray-700
           hover:bg-gray-100
-        "  :to="{name: 'account.profile', params : {id : authUser._id }, force : true }">Profile</router-link>
+        "  :to="{name: 'user', params : {id : authUser._id }, force : true }">Profile</router-link>
       </li>
       <li>
         <router-link  class="
@@ -212,7 +212,7 @@
             bg-transparent
             text-gray-700
             hover:bg-gray-100" 
-            :to="{name: 'account.profile', params : {id : authUser._id }, force : true }">Profile</router-link>
+            :to="{name: 'user', params : {id : authUser._id }, force : true }">Profile</router-link>
       </li>      
       <li>
         <router-link class="

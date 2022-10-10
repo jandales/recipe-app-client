@@ -22,8 +22,6 @@ const routes = [
                 { path : '' , name : 'user.recipe'  },
                 { path : 'saved' , name : 'user.saved',  },
             ], beforeEnter : authenticated},  
-            
-            { path : '/account/profile/:id' , name : 'account.profile', component : () => import('../pages/UserRecipe.vue') },
         
             { path: '/account', name : 'account', component : () => import('../pages/Account.vue'), children : [
                

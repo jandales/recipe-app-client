@@ -34,7 +34,10 @@ const handleLoadMoreRecipe = async () => {
     isMoreToLoad.value = false;   
 }
 
+
 await getRecipes();
+
+
 
 </script>
 

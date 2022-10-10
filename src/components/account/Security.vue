@@ -19,7 +19,7 @@
       isLoading.value = true;
       try {
         await store.dispatch('deleteAccount')
-        
+        location.reload();
       } catch (err) { 
         console.log(err)
       }
@@ -145,7 +145,7 @@
     </div>
     <div class="w-full"> 
 
-            <input
+            <button
               @click="handleChangePassword"
               type="submit"
               name="submit"
@@ -153,20 +153,30 @@
               :disabled="authUser.provider"
               :class="{ 'cursor-not-allowed bg-gray-500 hover:bg-gray-500'  : authUser.provider}"
               class="inline-block px-7 py-3 w-full lg:w-auto bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            />
+            >
+            <div v-if="isLoading"  class="spinner-border animate-spin inline-block w-4 h-4 border-4 rounded-full text-green-500" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+              <label v-else class="text-white" >Delete</label>
+          </button>
           
     </div>
   </div>
 
   <div class="w-full bg-white p-6 border rounded-md">
     <h1 class="text-lg font-semibold mb-4">Delete account</h1>
-    <input
+    <button
               @click="handleDeleteAccount"
               type="submit"
               name="submit"
               value="Delete"
-              class="inline-block px-7 py-3 w-full lg:w-auto border   text-sm font-semibold leading-snug uppercase rounded shadow-md border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white hover:shadow-lg focus:bg-rose-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            />
+              class="group inline-block px-7 py-3 w-full lg:w-auto border   text-sm font-semibold leading-snug uppercase rounded shadow-md border-rose-500  hover:bg-rose-500 hover:text-white hover:shadow-lg focus:bg-rose-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+            >
+            <div v-if="isLoading"  class="spinner-border animate-spin inline-block w-4 h-4 border-4 rounded-full text-green-500" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+              <label v-else class="text-rose-500 group-hover:text-white" >Delete</label>
+    </button>
   </div>
 
    

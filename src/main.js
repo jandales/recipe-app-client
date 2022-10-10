@@ -4,7 +4,6 @@ import router from './route/index'
 import store from './store/index'
 import Navigation from "./components/layout/Navigation.vue"
 import Footer  from "./components/layout/Footer.vue";
-import PageLoading from './components/PageLoading.vue'
 import './index.css'
 import 'tw-elements';
 
@@ -19,7 +18,6 @@ app.config.globalProperties.$defaultRecipeImage = `${path}/img/recipes/default.j
 app
 .component('Navigation', Navigation)
 .component('Footer', Footer)
-.component('PageLoading', PageLoading)
 .use(router)
 .use(store)
 .mount('#app')

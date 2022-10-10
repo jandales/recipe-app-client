@@ -23,10 +23,12 @@ const authUser = computed( () => { return store.getters.authUser } );
 const user = computed( () => { return store.getters.user } );
 const isAuth = computed( () => { return authUser.value._id == user.value._id ? true : false } );
 
+
+
 </script>
 
 <template>
-    <div  class="w-full  mx-auto lg:max-w-xs lg:mx-0  p-4 lg:bg-white rounded-md">              
+    <div  class="w-full  mx-auto h-fit lg:max-w-xs lg:mx-0  p-4 lg:bg-white  rounded-md">              
               <BigAvatar             
                 :user="user"
                 :isAuth="isAuth"            
