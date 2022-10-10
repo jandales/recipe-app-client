@@ -1,7 +1,9 @@
 <script setup>
   import { reactive, ref, computed } from 'vue'
-
   import { useStore } from 'vuex'
+  // components 
+  import ChangePassword from './security/ChangePassword.vue';
+  import DeleteAccount from './security/DeleteAccount.vue';
     
   const store = useStore();
   const message = ref();
@@ -14,20 +16,7 @@
       password : null,
   });
 
-  const handleDeleteAccount = async() =>  {
 
-      isLoading.value = true;
-      try {
-        await store.dispatch('deleteAccount')
-        location.reload();
-      } catch (err) { 
-        console.log(err)
-      }
-      finally {
-        isLoading.value = false;
-      }
-      
-  }
 
   const handleChangePassword = async () => {  
       errors.value = [];
@@ -76,108 +65,12 @@
 </div>
 
 
+  <ChangePassword />
 
-  <div class="w-full bg-white p-6 border rounded-md mb-4">
-    
-    <h1 class="text-lg text-gray-500 font-semibold mb-4">Change password</h1>
-    <div class="w-full mb-6">
-      <label for="exampleInputEmail2" class="block mb-2 text-gray-700">Old Password</label>
-      <input type="password" v-model="form.password" class="form-control
-        w-full      
-        px-3
-        py-1.5
-        text-base        
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-        aria-describedby="emailHelp">
-        <div v-for="error in errors">                
-            <small v-if="error.param == 'password'" class="block text-rose-500  mt-2">{{error.msg}}</small> 
-        </div>
-    </div>
-    <div class="w-full mb-6">
-      <label for="exampleInputEmail2" class="block mb-2  text-gray-700">New Password</label>
-      <input type="password" v-model="form.new_password" class="form-control
-        w-full        
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-        aria-describedby="emailHelp">
-        <div v-for="error in errors">                
-            <small v-if="error.param == 'new_password'" class="block text-rose-500  mt-2">{{error.msg}}</small> 
-        </div>
-    </div>
-    <div class="w-full mb-6">
-      <label for="exampleInputEmail2" class="block mb-2  text-gray-700">Confirm Password</label>
-      <input type="password" v-model="form.password_confirmation" class="form-control
-        w-full          
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-        aria-describedby="emailHelp">
-        <div v-for="error in errors">                
-            <small v-if="error.param == 'password_confirmation'" class="block text-rose-500  mt-2">{{error.msg}}</small> 
-        </div>
-    </div>
-    <div class="w-full"> 
 
-            <button
-              @click="handleChangePassword"
-              type="submit"
-              name="submit"
-              value="Change Password"
-              :disabled="authUser.provider"
-              :class="{ 'cursor-not-allowed bg-gray-500 hover:bg-gray-500'  : authUser.provider}"
-              class="inline-block px-7 py-3 w-full lg:w-auto bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-            <div v-if="isLoading"  class="spinner-border animate-spin inline-block w-4 h-4 border-4 rounded-full text-green-500" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-              <label v-else class="text-white" >Delete</label>
-          </button>
-          
-    </div>
-  </div>
+  <DeleteAccount />
 
-  <div class="w-full bg-white p-6 border rounded-md">
-    <h1 class="text-lg font-semibold mb-4">Delete account</h1>
-    <button
-              @click="handleDeleteAccount"
-              type="submit"
-              name="submit"
-              value="Delete"
-              class="group inline-block px-7 py-3 w-full lg:w-auto border   text-sm font-semibold leading-snug uppercase rounded shadow-md border-rose-500  hover:bg-rose-500 hover:text-white hover:shadow-lg focus:bg-rose-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-            <div v-if="isLoading"  class="spinner-border animate-spin inline-block w-4 h-4 border-4 rounded-full text-green-500" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-              <label v-else class="text-rose-500 group-hover:text-white" >Delete</label>
-    </button>
-  </div>
+
 
    
 </div>

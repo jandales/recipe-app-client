@@ -41,8 +41,12 @@ const actions = {
         commit('SET_USER', response.data);        
     }, 
 
-    async changePassword({commit}, payload) {
+    async changePassword({commit}, payload) {       
         return await axios.put('/api/user/change-password', payload)      
+    },
+
+    async confirmDelete({commit}, payload) {     
+        return await axios.post('/api/user/confirm/password', payload)
     },
 
     async deleteAccount({commit}) {

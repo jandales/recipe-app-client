@@ -21,7 +21,7 @@ onBeforeRouteUpdate((to, from, next) => {
       location.href = `/user/${authUser._id}`
       return;    
     }
-    return;
+ 
 })
 
 
